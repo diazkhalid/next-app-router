@@ -6,7 +6,10 @@ type ProductPageProps = {
 
 const getData = async () => {
   const res = await fetch("http://localhost:3000/api/products", {
-    cache: "no-store",
+    cache: "force-cache",
+    next: {
+      tags: ["products"],
+    },
   });
 
   if (!res.ok) {
@@ -52,8 +55,12 @@ export default async function ProductPage({ params }: ProductPageProps) {
                     </h5>
                   </a>
                   <div className="flex items-center justify-between mt-5">
-                    <span className="text-3xl font-bold text-gray-900 dark:text-white">
-                      $ {product.price}
+                    <span className="text-xl font-bold text-gray-900 dark:text-white">
+                      Rp{" "}
+                      {product.price.toLocaleString("id-ID", {
+                        styles: "currency",
+                        currency: "IDR",
+                      })}
                     </span>
                     <a
                       href="#"
