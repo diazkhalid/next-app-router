@@ -3,13 +3,15 @@ import { NextRequest, NextResponse } from "next/server";
 const data = [
     {
         id: 1,
-        name: 'MacBook Pro',
+        title: 'MacBook Pro',
         price: 20000000,
+        image: '/images/mac.png'
     },
     {
         id: 2,
-        name: 'iPhone 15 Pro Max',
+        title: 'iPhone 15 Pro Max',
         price: 23000000,
+        image: '/images/ip15.jpg'
     },
 ]
 export async function GET(request: NextRequest){
