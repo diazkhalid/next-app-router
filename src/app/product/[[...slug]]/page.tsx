@@ -6,7 +6,7 @@ type ProductPageProps = {
 
 const getData = async () => {
   const res = await fetch("http://localhost:3000/api/products", {
-    cache: "force-cache",
+    cache: "no-store",
     next: {
       tags: ["products"],
     },
@@ -26,10 +26,10 @@ export default async function ProductPage({ params }: ProductPageProps) {
 
   return (
     <div>
-      <div className="w-full flex justify-center py-5 font-bold text-2xl">
+      {/* <div className="w-full flex justify-center py-5 font-bold text-2xl">
         <h1>{params.slug ? "Detail Product Page" : "Products Page"}</h1>
-      </div>
-      <div className="grid grid-cols-4 place-items-center gap-5">
+      </div> */}
+      <div className="grid grid-cols-4 place-items-center gap-5 mt-5">
         {products.data.length > 0 &&
           products.data.map((product: any) => {
             return (
