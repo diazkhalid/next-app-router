@@ -20,7 +20,7 @@ export default function AdminProductsPage() {
     }
   };
   return (
-    <>
+    <div className="flex justify-center items-center w-1/2 bg-slate-300 rounded-[12px] h-96 mr-5">
       <h1>{status}</h1>
       <button
         className="p-5 bg-slate-700 text-white m-5 hover:bg-slate-500"
@@ -28,6 +28,6 @@ export default function AdminProductsPage() {
       >
         Revalidate
       </button>
-    </>
+    </div>
   );
 }

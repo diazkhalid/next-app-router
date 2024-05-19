@@ -31,6 +31,7 @@ export default async function ProductPage({ params }: ProductPageProps) {
       </div> */}
       <div className="grid grid-cols-4 place-items-center gap-5 mt-5">
         {products.data.length > 0 &&
+          !params.slug &&
           products.data.map((product: any) => {
             return (
               <div
@@ -49,8 +50,8 @@ export default async function ProductPage({ params }: ProductPageProps) {
                   </div>
                 </div>
                 <div className="px-5 pb-5 justify-between">
-                  <a href="#">
-                    <h5 className="text-xl font-semibold tracking-tight text-gray-900 dark:text-white truncate">
+                  <a href={`/product/${product.id}`}>
+                    <h5 className="text-xl font-semibold tracking-tight text-gray-900 dark:text-white truncate hover:underline">
                       {product.title}
                     </h5>
                   </a>

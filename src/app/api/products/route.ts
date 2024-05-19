@@ -37,7 +37,7 @@ const data = [
       "https://images.tokopedia.net/img/cache/700/VqbcmM/2023/6/20/3400450d-1dcc-4eb7-832b-c80fef70b373.jpg",
   },
   {
-    id: 5,
+    id: 6,
     title: "Lenovo Legion 7 Slim",
     price: 30000000,
     image:
