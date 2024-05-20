@@ -1,28 +1,14 @@
+import { getData } from "@/services/products";
+import Link from "next/link";
+
 type ProductPageProps = {
   params: {
     slug: string[];
   };
 };
 
-const getData = async () => {
-  const res = await fetch("http://localhost:3000/api/products", {
-    cache: "no-store",
-    next: {
-      tags: ["products"],
-    },
-  });
-
-  if (!res.ok) {
-    return {
-      status: res.status,
-      messsage: res.statusText,
-    };
-  }
-  return res.json();
-};
-
 export default async function ProductPage({ params }: ProductPageProps) {
-  const products = await getData();
+  const products = await getData("http://localhost:3000/api/products");
 
   return (
     <div>
@@ -40,21 +26,19 @@ export default async function ProductPage({ params }: ProductPageProps) {
               >
                 <div className="p-4">
                   <div className="overflow-hidden rounded-lg mb-3">
-                    <a href="#">
-                      <img
-                        className="rounded-t-lg h-96 w-full object-cover"
-                        src={product.image}
-                        alt="product image"
-                      />
-                    </a>
+                    <img
+                      className="rounded-t-lg h-96 w-full object-cover"
+                      src={product.image}
+                      alt="product image"
+                    />
                   </div>
                 </div>
                 <div className="px-5 pb-5 justify-between">
-                  <a href={`/product/${product.id}`}>
+                  <Link href={`/product/detail/${product.id}`}>
                     <h5 className="text-xl font-semibold tracking-tight text-gray-900 dark:text-white truncate hover:underline">
                       {product.title}
                     </h5>
-                  </a>
+                  </Link>
                   <div className="flex items-center justify-between mt-5">
                     <span className="text-xl font-bold text-gray-900 dark:text-white">
                       Rp{" "}
@@ -63,12 +47,12 @@ export default async function ProductPage({ params }: ProductPageProps) {
                         currency: "IDR",
                       })}
                     </span>
-                    <a
-                      href="#"
+                    <button
+                      type="button"
                       className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
                     >
                       Add to cart
-                    </a>
+                    </button>
                   </div>
                 </div>
               </div>
